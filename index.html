@@ -9,8 +9,14 @@
 <body>
     <div class="container">
         <h1> play Rock Paper Scissors</h1>
-        <p>You Scor: <span id="userScore"> </span> Computer's scor: <span id="computerScore"></span></p>
-        <button id="playGame" onclick="playGame()">play a game</button>
+        <p>You Scor: <span id="userScore"> 0 </span> / Computer's scor: <span id="computerScore"> 0 </span></p>
+        <p id="result">Select a chois</p>
+        <div class="buttons">
+            <button onclick="playerSelection('rock')">Rock</button>
+            <button onclick="playerSelection('paper')">Paper</button>
+            <button onclick="playerSelection('scissors')">Scissors</button>
+        </div>
+        <!-- <button id="playGame" onclick="playGame()">play a game</button> -->
     </div>
     
     <script src="script.js"></script>
