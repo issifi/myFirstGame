@@ -1,0 +1,13 @@
+body{
+    background-color: aquamarine;
+}
+.container{
+    background-color: blueviolet;
+    width: 700px;
+    height: 600px;
+    margin: 0 auto 0 auto;
+    text-align: center;
+}
+h1{
+    padding: 10px;
+}
