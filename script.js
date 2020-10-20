@@ -111,6 +111,7 @@ function resetScor() {
     computerScor = 0;
     document.getElementById("userScore").innerHTML = "  ";
     document.getElementById("computerScore").innerHTML = "  ";
+    document.getElementById("result").innerHTML = "Make a choice";
 };
 // who is the winer
 function finalResult() {
