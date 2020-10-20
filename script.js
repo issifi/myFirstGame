@@ -109,6 +109,8 @@ function resetScor() {
     round = 0;
     playerScor = 0;
     computerScor = 0;
+    document.getElementById("userScore").innerHTML = "  ";
+    document.getElementById("computerScore").innerHTML = "  ";
 };
 // who is the winer
 function finalResult() {
