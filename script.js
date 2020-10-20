@@ -1,4 +1,7 @@
-
+// score save
+let computerScor = 0;
+let playerScor = 0;
+let round = 0;
 // computerPlay function that return randomly 'rock', 'paper', or 'scissors'
 function computerPlay() {
     let c = Math.floor(Math.random()*12)+1
@@ -22,11 +25,13 @@ function playRound(playerSelection, computerSelection) {
             document.getElementById("userScore").innerHTML = " 0 ";
             document.getElementById("computerScore").innerHTML = " 1 ";
             document.getElementById("result").innerHTML = "You Lose! Paper beats Rock";
+            computerScor += 1;
             // alert ('you lost. rock > paper')
         } else if (computerSelection === 'SCISSORS') {
             document.getElementById("userScore").innerHTML = " 1 ";
             document.getElementById("computerScore").innerHTML = " 0 ";
             document.getElementById("result").innerHTML = "You Win! Rock beats Scissors";
+            playerScor += 1;
             // alert ('you wins. rock > scissors')
         }else if (computerSelection == 'ROCK') {
             document.getElementById("userScore").innerHTML = " 0 ";
@@ -46,11 +51,13 @@ function playRound(playerSelection, computerSelection) {
             document.getElementById("userScore").innerHTML = " 0 ";
             document.getElementById("computerScore").innerHTML = " 1 ";
             document.getElementById("result").innerHTML = "You Lose! Scissors beat Paper"
+            computerScor += 1;
             // alert ('you lost. paper < scissors')
         }else if (computerSelection == 'ROCK') {
             document.getElementById("userScore").innerHTML = " 1 ";
             document.getElementById("computerScore").innerHTML = " 0 ";
             document.getElementById("result").innerHTML = "You Wine! Paper beat Rock"
+            playerScor += 1;
             // alert ('you wins. paper > rock ')
         }
         // in case of player chos scissors
@@ -59,6 +66,7 @@ function playRound(playerSelection, computerSelection) {
             document.getElementById("userScore").innerHTML = " 1 ";
             document.getElementById("computerScore").innerHTML = " 0 ";
             document.getElementById("result").innerHTML = "You Wine! Scissors beat Paper";
+            playerScor += 1;
             // alert ('you wins. scissors > paper ')
         } else if (computerSelection === 'SCISSORS') {
             document.getElementById("userScore").innerHTML = " 0 ";
@@ -69,25 +77,50 @@ function playRound(playerSelection, computerSelection) {
             document.getElementById("userScore").innerHTML = " 0 ";
             document.getElementById("computerScore").innerHTML = " 1 ";
             document.getElementById("result").innerHTML = "You Lose! Rock beat Scissors";
+            computerScor += 1;
             //alert( 'you lost. scissors < rock')
         }
     }
+    round += 1;
 }
 // get player selection
-function playerSelection(ps){
-    playRound(ps,computerPlay())
+
+const buttons = document.querySelectorAll('.btn');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        let ps = button.id;
+        playRound(ps, computerPlay());
+        finalResult();
+    } )
+});
+
+document.querySelector("#newGame").addEventListener('click',() => {
+    resetScor();
+    document.querySelector("#finalResult").textContent = '';
+    newGame.style.cssText = "display : none;"
+})
+
+let newGame = document.getElementById("newGame");
+function chowBtn() {
+    newGame.style.cssText = "display : inline-block"
 }
-// triger function
-// function playGame() {
-    // loop 5 time
-    // for (let index = 0; index < 5; index++) {
-        // playerSelection = prompt('enter a chose')
-        // playRound(playerSelection,computerPlay() )
-    // }
-// }
-// set the function on the button
 
+function resetScor() {
+    round = 0;
+    playerScor = 0;
+    computerScor = 0;
+};
+// who is the winer
+function finalResult() {
+    
+    if(round === 5){
+        if(playerScor > computerScor){
+            document.querySelector("#finalResult").textContent = playerScor + " You win";
+        }else{
+            document.querySelector("#finalResult").textContent = computerScor +" You lose";
+        }
+        console.log("5 round")
+        chowBtn();
+    }
 
-//const computerSelection = computerPlay()
-//console.log(computerPlay());
-
+}
